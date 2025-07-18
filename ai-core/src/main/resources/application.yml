@@ -15,4 +15,5 @@ spring.ai.openai:
 spring.ai.doubao:
   api-key: ${DOUBAO_API_KEY}
   base-url: https://ark.cn-beijing.volces.com
-  model: doubao-seed-1-6-flash-250615
+  model-text: doubao-seed-1-6-flash-250615
+  model-image: doubao-seedream-3-0-t2i-250415

@@ -15,7 +15,8 @@ public class DoubaoProperties {
 
     private String apiKey;
     private String baseUrl;
-    private String model;
+    private String modelText;
+    private String modelImage;
 
     private Chat chat = new Chat();
 

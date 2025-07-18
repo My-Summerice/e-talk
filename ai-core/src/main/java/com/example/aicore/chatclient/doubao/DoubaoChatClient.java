@@ -1,13 +1,8 @@
-package com.example.aicore.chatclient;
+package com.example.aicore.chatclient.doubao;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.aicore.config.DoubaoProperties;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 import org.springframework.ai.chat.ChatClient;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.Generation;
@@ -21,7 +16,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -30,7 +24,7 @@ import java.util.Objects;
  * @since 2025-07-16 16:12:00
  */
 @Slf4j
-@Component
+@Component("doubao-text-model")
 public class DoubaoChatClient implements ChatClient {
 
     @Autowired
@@ -40,11 +34,12 @@ public class DoubaoChatClient implements ChatClient {
 
     @Override
     public ChatResponse call(Prompt prompt) {
+
         // 构造 Doubao 的请求 JSON
         Map<String, Object> body = Map.of(
-                "model", properties.getModel(),
-                "messages", prompt.getInstructions().stream().map(instruction ->
-                        Map.of("role", "user", "content", instruction.getContent())
+                "model", properties.getModelText(),
+                "messages", prompt.getInstructions().stream().map(message ->
+                        Map.of("role", message.getMessageType().getValue(), "content", message.getContent())
                 ).toList()
         );
 
