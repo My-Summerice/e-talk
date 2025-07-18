@@ -1,0 +1,21 @@
+# 忽略编译生成的字节码文件
+*.class
+
+# Maven或Gradle的构建目录
+target/
+build/
+
+# IntelliJ IDEA、Eclipse等IDE的项目配置和临时文件
+.idea/
+.project
+.classpath
+.settings/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+# 日志文件和缓存
+logs/
+*.log
+*.cache!/ai-core/target/
